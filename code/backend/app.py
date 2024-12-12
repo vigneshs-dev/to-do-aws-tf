@@ -6,8 +6,8 @@ app = Flask(__name__)
 CORS(app)
 
 db_config = {
-    # 'host': 'db',
-    'host': 'localhost',
+    'host': 'db',
+    # 'host': 'localhost',
     'user': 'root',
     'password': 'melss',
     'database': 'todo_db'

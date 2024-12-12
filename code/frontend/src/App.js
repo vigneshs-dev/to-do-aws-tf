@@ -3,7 +3,8 @@ import axios from 'axios';
 
 // Use the service name "backend" as the base URL in Docker
 // const API_URL = 'http://backend:5000/todos';
-const API_URL = 'http://localhost:5000/todos';
+// const API_URL = 'http://localhost:5000/todos';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/todos';
 // const API_URL = 'http://172.17.43.144:5000/todos';
 
 function App() {

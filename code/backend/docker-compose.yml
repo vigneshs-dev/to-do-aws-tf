@@ -17,7 +17,8 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: .
+      dockerfile: Dockerfile
     container_name: flask_container
     ports:
       - "5000:5000"
@@ -26,20 +27,20 @@ services:
     mem_limit: 256m
     cpu_shares: 128
 
-  frontend:
-    build:
-      context: ./frontend
-    container_name: react_container
-    ports:
-      - "3000:3000"  # Map port 3000
-    depends_on:
-      - backend
-    mem_limit: 512m  # Allocate sufficient memory for React
-    cpu_shares: 128
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   container_name: react_container
+  #   ports:
+  #     - "3000:3000"  # Map port 3000
+  #   depends_on:
+  #     - backend
+  #   mem_limit: 512m  # Allocate sufficient memory for React
+  #   cpu_shares: 128
 
 volumes:
   mysql_data:
 
-networks:
-  default:
-    driver: bridge
+# networks:
+#   default:
+#     driver: bridge
