@@ -3,12 +3,22 @@ from flask_cors import CORS
 import mysql.connector
 import os
 
+from dotenv import load_dotenv
+load_dotenv()  # This automatically loads a `.env` file in the same directory.
+
+
 app = Flask(__name__)
 CORS(app)
 
-# Split the endpoint to get just the hostname
-db_host = os.environ.get('DB_ENDPOINT', '').split(':')[0]
-db_password = os.environ.get('DB_PASSWORD', '') 
+# Fetch database credentials from .env file
+db_host = os.getenv('DB_ENDPOINT').split(':')[0]  # Get the host without port
+print(db_host)
+db_password = os.getenv('DB_PASSWORD')
+print(db_password)
+
+# # Split the endpoint to get just the hostname
+# db_host = os.environ.get('DB_ENDPOINT', '').split(':')[0]
+# db_password = os.environ.get('DB_PASSWORD', '') 
 
 db_config = {
     'host': db_host,
