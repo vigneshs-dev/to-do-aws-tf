@@ -1,4 +1,4 @@
 flask
 flask-cors
-flask-mysql-connector
+mysql-connector-python  # This is the package you're using for MySQL connections
 python-dotenv
