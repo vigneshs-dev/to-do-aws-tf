@@ -1,17 +1,29 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import mysql.connector
+import os
 
 app = Flask(__name__)
 CORS(app)
 
+# Split the endpoint to get just the hostname
+db_host = os.environ.get('DB_ENDPOINT', '').split(':')[0]
+db_password = os.environ.get('DB_PASSWORD', '') 
+
 db_config = {
-    'host': 'db',
-    # 'host': 'localhost',
-    'user': 'root',
-    'password': 'melss',
+    'host': db_host,
+    'user': 'admin',
+    'password': db_password,
     'database': 'todo_db'
 }
+
+# db_config = {
+#     'host': 'db',
+#     # 'host': 'localhost',
+#     'user': 'root',
+#     'password': 'melss',
+#     'database': 'todo_db'
+# }
 
 
 def get_db_connection():
